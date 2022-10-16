@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+        <link rel="preconnect" href="https://fonts.gstatic.com/crossorigin">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link rel="stylesheet" href="{% static 'assets/css/maicons.css' %}">
+
+        <link rel="stylesheet" href="{% static '/assets/css/bootstrap.css' %}">
+
+        <link rel="stylesheet" href="{% static '/assets/vendor/animate/animate.css' %}">
+
+        <link rel="stylesheet" href="{% static '/assets/css/theme.css' %}">
+    <style>
+    body {background-image: radial-gradient(#734f96, #6f2da8, #69359c);}
+    h1 {margin-left: 18%; margin-top: 7%}
+    p {margin-left: 18%;}
+    .button-21 {
+      align-items: center;
+      appearance: none;
+      background-color: #003865;
+      background-size: calc(100% + 20px) calc(100% + 20px);
+      background-image: linear-gradient(1deg, #A460ED, #645CAA 99%);
+      border-radius: 100px;
+      border-width: 0;
+      box-shadow: none;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-flex;
+      font-family: CircularStd,sans-serif;
+      font-size: 1.5rem;
+      height: auto;
+      justify-content: center;
+      line-height: 1.5;
+      padding: 6px 20px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color .2s,background-position .2s;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      vertical-align: top;
+      white-space: nowrap;
+      margin-left:920px;
+      margin-top:70px;
+      width: 250px;
+      height: 60px;
+    }
+
+    .button-21:active,
+    .button-21:focus {
+      outline: none;
+    }
+
+    .button-21:hover {
+      background-position: -20px -20px;
+    }
+
+    .button-21:focus:not(:active) {
+      box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
+    }
+    .btn:hover {background: #eee;}
+
+    </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white sticky" data-offset="500">
+      <div class="container">
+        <a href="#" class="navbar-brand">Blen<span class="text-primary">dr.</span></a>
+
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarContent">
+          <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item">
+              {% if user.is_authenticated %}
+                <a class="btn btn-primary ml-lg-2" href="">LOG OUT</a>
+              {% else %}
+                <a class="btn btn-primary ml-lg-2" href="">LOGIN OR SIGNUP</a>
+              {% endif %}
+
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+        </nav>
+        {% if user.is_authenticated %}
+            <h1 style="color:#F9DDD3; font-size:80px; font-family:'Playfair Display', serif;">Nice to meet you,<br>{{ user.username }}</h1>
+            <p style="color:#F9DDD3; font-size:25px; font-family:Arial, Helvetica, sans-serif;">Now tell us more about yourself and food materials at hand so we can recommend<br>the best recipe for you.</p>
+
+
+        {% else %}
+
+        {% endif %}
+    <div class = 'col-md-6 offset-8'>
+         <a class="btn btn-primary ml-lg-2 off-set-8" href="survey">Let's get started</a>
+    </div>
+
+    </body>
+</html>

@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>DIG 245 Generative Design</title>
+
+  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+
+
+      body {
+          background-image: radial-gradient(#734f96, #6f2da8, #69359c);
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center center;
+        font-family: "Lato", sans-serif;
+        text-align: center;
+
+
+      }
+
+      h1{
+        color: white;
+        padding-top: 50px;
+        font-size: 2rem;
+        font-weight: 700;
+      }
+
+      #titles{
+        color: white;
+        font-size: 2rem;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      p {
+        color: white;
+        text-align: left;
+        margin-top: 50px;
+      }
+
+
+
+      input {
+        background-color: #E7928E;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        margin-top: 50px;
+        width: 10em;
+        height: 3em;
+      }
+
+
+
+      .logo {
+        margin-top: 50px;
+        max-width: 50%;
+        max-height: 50%;
+      }
+
+      #film-cover {
+        margin-top: 50px;
+        max-width: 70%;
+        max-height: 70%;
+      }
+
+      @media (min-width: 768px) {
+        p {
+          font-size: 1.5rem;
+        }
+      }
+
+      #randomize {
+        font-weight: 700;
+      }
+
+
+
+
+  </style>
+</head>
+
+<body>
+
+
+  <div class="container">
+
+
+
+    <div class = "row">
+      <div class = "col-md-12">
+        <h1 id = "openner"> FIND A NEW RECIPE  TO COOK </h1>
+      </div>
+    </div>
+  </div>
+
+
+  <div class = "container">
+
+    <div class = "row">
+      <div class = "col-md-12">
+        <input class = "start" id = "randomize" Value = "START" onClick = "returnRandomMovie(movies)" type = "button">
+      </div>
+    </div>
+
+    <div class='row'>
+        <div class="col-12 col-md-6">
+          <p id="titles">  </p>
+        </div>
+    </div>
+
+    <div class='row'>
+       <div class="col-12 col-md-6">
+         <p id = "description"> </p>
+       </div>
+
+       <div class="col-12 col-md-6">
+          <img id="film-cover" alt class = "img-fluid" src="data:,">
+      </div>
+
+     </div>
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- visible content goes here -->
+
+
+  <!-- javascript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  <script>
+      var movies = {{ recList|safe }};
+      console.log(movies);
+
+
+//return a random movie with the selected genre
+    function returnRandomMovie(movies) {
+        var movie = Math.floor(Math.random() * movies.length);
+        document.querySelector('#titles').textContent = (movies[movie].label);
+        document.querySelector('#description').textContent = "Calories: " + movies[movie].calories;
+        document.querySelector("#randomize").setAttribute("Value", "New recipe?");
+        document.querySelector('#film-cover').setAttribute('src', movies[movie].image);
+        $("#openner").hide();
+
+}
+  </script>
+
+</body>
+
+</html>
